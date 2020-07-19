@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'all_fields.dart';
 import 'login.dart';
 import 'register.dart';
-import 'register_with_map.dart';
-import 'all_fields_v1.dart';
+//import 'register_with_map.dart';
+//import 'all_fields_v1.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -28,11 +28,11 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         '/': (context) => MyHomePage(),
-        '/allfieldsv1': (context) => AllFieldsV1(),
+        //'/allfieldsv1': (context) => AllFieldsV1(),
         '/allfields': (context) => AllFields(),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
-        '/registerMap': (context) => RegisterMap(),
+        //'/registerMap': (context) => RegisterMap(),
       },
     );
   }
@@ -77,12 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: new Column(children: <Widget>[
-            new RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/allfieldsv1');
-              },
-              child: Text("All Fields V1"),
-            ),
+            // new RaisedButton(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, '/allfieldsv1');
+            //   },
+            //   child: Text("All Fields V1"),
+            // ),
             new RaisedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/allfields');
@@ -101,12 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text("Register Form Test"),
             ),
-            new RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/registerMap');
-              },
-              child: Text("Register Form Test with Map"),
-            ),
+            // new RaisedButton(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, '/registerMap');
+            //   },
+            //   child: Text("Register Form Test with Map"),
+            // ),
           ]),
         ),
     );
