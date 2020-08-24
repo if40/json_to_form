@@ -1,0 +1,4 @@
+#Fri Jul 24 09:59:31 EEST 2020
+base.0=D\:\\Work\\Tests\\Flutter\\json_to_form\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

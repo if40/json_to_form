@@ -134,6 +134,7 @@ class _AllFields extends State<AllFields> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text("All Fields"),
+        backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Container(

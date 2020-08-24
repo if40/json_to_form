@@ -78,6 +78,7 @@ class _Register extends State<Register> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text("Login"),
+        backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Center(

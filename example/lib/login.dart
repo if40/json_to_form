@@ -47,6 +47,7 @@ class _Login extends State<Login> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Login"),
+        backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Center(

@@ -72,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text("Test Form Json Schema"),
+        backgroundColor: Colors.blue,
       ),
       body:new Center(
           // Center is a layout widget. It takes a single child and positions it
@@ -83,24 +84,32 @@ class _MyHomePageState extends State<MyHomePage> {
             //   },
             //   child: Text("All Fields V1"),
             // ),
-            new RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/allfields');
-              },
-              child: Text("All Fields"),
-            ),
-            new RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: Text("Login Form Test"),
-            ),
-            new RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/register');
-              },
-              child: Text("Register Form Test"),
-            ),
+            Row(children: <Widget>[
+                    Expanded(
+                      child: RaisedButton(
+                        child: Text('All Fields', style: TextStyle(fontSize: 20)),
+                        onPressed: () {
+                            Navigator.pushNamed(context, '/allfields');
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: RaisedButton(
+                        child: Text('Login Form Test', style: TextStyle(fontSize: 20)),
+                        onPressed: () {
+                            Navigator.pushNamed(context, '/login');
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: RaisedButton(
+                        child: Text('Register Form Test', style: TextStyle(fontSize: 20)),
+                        onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                        },
+                      ),
+                    )
+                  ]),
             // new RaisedButton(
             //   onPressed: () {
             //     Navigator.pushNamed(context, '/registerMap');
