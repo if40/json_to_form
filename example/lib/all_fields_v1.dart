@@ -22,14 +22,17 @@ class AllFieldsV1 extends StatefulWidget {
 }
 
 class _AllFieldsV1 extends State<AllFieldsV1> {
-
-
   String sendEmailForm = json.encode([
     {'type': 'Input', 'title': 'Subject', 'placeholder': "Subject"},
     {'type': 'TareaText', 'title': 'Message', 'placeholder': "Content"},
   ]);
   String form = json.encode([
-    {'type': 'Input', 'title': 'Hi Group', 'placeholder': "Hi Group flutter", 'validator': 'digitsOnly'},
+    {
+      'type': 'Input',
+      'title': 'Hi Group',
+      'placeholder': "Hi Group flutter",
+      'validator': 'digitsOnly'
+    },
     {
       'type': 'Password',
       'title': 'Password',
@@ -126,8 +129,7 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
             new CoreForm(
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
-                  borderSide: BorderSide(width: 2, color: Colors.red)
-              ),
+                  borderSide: BorderSide(width: 2, color: Colors.red)),
               form: form,
               onChanged: (dynamic response) {
                 this.response = response;

@@ -41,7 +41,7 @@ class _CoreFormState extends State<JsonSchema> {
 
   String isRequired(item, value) {
     if (value.isEmpty) {
-      return widget.errorMessages[item['key']] ?? 'Please enter some text';
+      return widget.errorMessages[item['key']] ?? 'Моля, въведете някакъв текст.';
     }
     return null;
   }
@@ -59,7 +59,7 @@ class _CoreFormState extends State<JsonSchema> {
     if (regExp.hasMatch(value)) {
       return null;
     }
-    return 'Email is not valid';
+    return 'Невалиден имейл.';
   }
 
   bool labelHidden(item) {
@@ -333,6 +333,7 @@ class _CoreFormState extends State<JsonSchema> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: implement build
     return Form(
       autovalidate: formGeneral['autoValidated'] ?? false,

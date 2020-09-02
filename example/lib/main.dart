@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'all_fields.dart';
+import 'all_fields_v1.dart';
 import 'login.dart';
 import 'register.dart';
+
 //import 'register_with_map.dart';
 //import 'all_fields_v1.dart';
 void main() => runApp(new MyApp());
@@ -23,12 +25,12 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
       routes: {
         '/': (context) => MyHomePage(),
-        //'/allfieldsv1': (context) => AllFieldsV1(),
+        '/allfieldsv1': (context) => AllFieldsV1(),
         '/allfields': (context) => AllFields(),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
@@ -58,6 +60,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   dynamic response;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -71,53 +74,108 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: new Text("Test Form Json Schema"),
+        title: new Text("FGen test - Web Atlas ERP"),
         backgroundColor: Colors.blue,
-      ),
-      body:new Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: new Column(children: <Widget>[
-            // new RaisedButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, '/allfieldsv1');
-            //   },
-            //   child: Text("All Fields V1"),
-            // ),
-            Row(children: <Widget>[
-                    Expanded(
-                      child: RaisedButton(
-                        child: Text('All Fields', style: TextStyle(fontSize: 20)),
-                        onPressed: () {
-                            Navigator.pushNamed(context, '/allfields');
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: RaisedButton(
-                        child: Text('Login Form Test', style: TextStyle(fontSize: 20)),
-                        onPressed: () {
-                            Navigator.pushNamed(context, '/login');
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: RaisedButton(
-                        child: Text('Register Form Test', style: TextStyle(fontSize: 20)),
-                        onPressed: () {
-                            Navigator.pushNamed(context, '/register');
-                        },
-                      ),
-                    )
-                  ]),
-            // new RaisedButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, '/registerMap');
-            //   },
-            //   child: Text("Register Form Test with Map"),
-            // ),
+      ),     
+      body: new Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: new Column(children: <Widget>[
+          Row(children: <Widget>[
+            Expanded(
+              child: OutlineButton(
+                child: Text(
+                    'All Fields v1' /* , style: TextStyle(fontSize: 20) */),
+                color: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/allfieldsv1');
+                },
+              ),
+            ),
+            Expanded(
+              child: OutlineButton(
+                child:
+                    Text('All Fields' /* , style: TextStyle(fontSize: 20) */),
+                color: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/allfields');
+                },
+              ),
+            ),
+            Expanded(
+              child: RaisedButton(
+                child: Text(
+                    'Login Form Test' /* , style: TextStyle(fontSize: 20) */),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+              ),
+            ),
+            Expanded(
+              child: RaisedButton(
+                child: Text(
+                    'Register Form Test' /* , style: TextStyle(fontSize: 20) */),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+              ),
+            )
           ]),
+          // _children[_selectedIndex],
+        ]),
+        
+      ),
+      drawer: Container(
+        width: 200,
+        child: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text(''),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                        image: AssetImage('images/logo.png'),
+                        fit: BoxFit.contain)),
+              ),
+              ListTile(
+                title: Text('Документи'),
+                leading: Icon(Icons.notes),
+                onTap: (){
+                  Navigator.pushNamed(context, "/allfields");
+                },
+              ),
+              ListTile(
+                title: Text('Параметри'),
+                leading: Icon(Icons.playlist_add_check),
+                onTap: (){
+                  Navigator.pushNamed(context, "/allfields");
+                },
+              ),
+              ListTile(
+                title: Text('Потребител'),
+                leading: Icon(Icons.person),
+                onTap: (){
+                  Navigator.pushNamed(context, "/register");
+                },
+              ),
+              ListTile(
+                title: Text('Настройки'),
+                leading: Icon(Icons.settings),
+                onTap: (){
+                  Navigator.pushNamed(context, "/allfields");
+                },
+              ),
+            ],
+          ),
         ),
+      ),
+      
     );
   }
 }
