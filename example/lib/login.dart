@@ -46,7 +46,7 @@ class _Login extends State<Login> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Login"),
+        title: new Text("Вход"),
         backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(

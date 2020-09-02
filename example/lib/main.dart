@@ -5,6 +5,7 @@ import 'all_fields.dart';
 import 'all_fields_v1.dart';
 import 'login.dart';
 import 'register.dart';
+import 'report_model.dart';
 
 //import 'register_with_map.dart';
 //import 'all_fields_v1.dart';
@@ -60,7 +61,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   dynamic response;
-  
+  int _index =0;
+  List<ReportModel> _reports = new List<ReportModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -76,54 +78,24 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: new Text("FGen test - Web Atlas ERP"),
         backgroundColor: Colors.blue,
-      ),     
+      ),
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: new Column(children: <Widget>[
-          Row(children: <Widget>[
-            Expanded(
-              child: OutlineButton(
-                child: Text(
-                    'All Fields v1' /* , style: TextStyle(fontSize: 20) */),
-                color: Colors.blueAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/allfieldsv1');
-                },
-              ),
-            ),
-            Expanded(
-              child: OutlineButton(
-                child:
-                    Text('All Fields' /* , style: TextStyle(fontSize: 20) */),
-                color: Colors.blueAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/allfields');
-                },
-              ),
-            ),
-            Expanded(
-              child: RaisedButton(
-                child: Text(
-                    'Login Form Test' /* , style: TextStyle(fontSize: 20) */),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-              ),
-            ),
-            Expanded(
-              child: RaisedButton(
-                child: Text(
-                    'Register Form Test' /* , style: TextStyle(fontSize: 20) */),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-              ),
-            )
-          ]),
-          // _children[_selectedIndex],
-        ]),
-        
+        //child: new Column(children: <Widget>[]),
+        child: new ListView.separated(
+          itemCount: _reports.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Icon(Icons.info_rounded),
+              title: Text(_reports[index].name),
+              subtitle: Text("Описание на ${_reports[index].name}", style: TextStyle(fontStyle: FontStyle.italic)),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider(height: 1.0,);
+          },
+        ),
       ),
       drawer: Container(
         width: 200,
@@ -146,28 +118,35 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 title: Text('Документи'),
                 leading: Icon(Icons.notes),
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/allfields");
                 },
               ),
               ListTile(
                 title: Text('Параметри'),
                 leading: Icon(Icons.playlist_add_check),
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/allfields");
                 },
               ),
               ListTile(
                 title: Text('Потребител'),
                 leading: Icon(Icons.person),
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/register");
                 },
               ),
               ListTile(
                 title: Text('Настройки'),
                 leading: Icon(Icons.settings),
-                onTap: (){
+                onTap: () {
+                  Navigator.pushNamed(context, "/allfields");
+                },
+              ),
+              ListTile(
+                title: Text('Относно'),
+                leading: Icon(Icons.info_outline),
+                onTap: () {
                   Navigator.pushNamed(context, "/allfields");
                 },
               ),
@@ -175,7 +154,22 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Нова справка'),
+        icon: Icon(Icons.add),
+        //backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        tooltip: 'Добавяне на нова справка',
+        onPressed: () => {
+          setState(() {
+                    _index ++;
+                      //Navigator.pushNamed(context, "/allfields");
+                      _reports.add(new ReportModel(name: "Справка " + _index.toString(), id: _index.toString()));
+                    })
+          },
+      ),
     );
   }
+
+  
 }

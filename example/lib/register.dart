@@ -26,23 +26,23 @@ class _Register extends State<Register> {
       {
         'key': 'name',
         'type': 'Input',
-        'label': 'Name',
-        'placeholder': "Enter Your Name",
+        'label': 'Име',
+        'placeholder': "Въведете Вашето име",
         'required': true,
       },
       {
         'key': 'username',
         'type': 'Input',
-        'label': 'Username',
-        'placeholder': "Enter Your Username",
+        'label': 'Потребителсо име',
+        'placeholder': "Въведете Вашето потребителско име",
         'required': true,
         'hiddenLabel':true,
       },
-      {'key': 'email', 'type': 'Email', 'label': 'email', 'required': true},
+      {'key': 'email', 'type': 'Email', 'label': 'Имейл', 'required': true},
       {
         'key': 'password1',
         'type': 'Password',
-        'label': 'Password',
+        'label': 'Парола',
         'required': true
       },
     ]
@@ -51,13 +51,13 @@ class _Register extends State<Register> {
 
   Map decorations = {
     'email': InputDecoration(
-      hintText: 'Email',
+      hintText: 'Имейл',
       prefixIcon: Icon(Icons.email),
       contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
     ),
     'username': InputDecoration(
-      labelText: "Enter your email",
+      labelText: "Въведете Вашия имейл",
       prefixIcon: Icon(Icons.account_box),
       border: OutlineInputBorder(),
     ),
@@ -77,8 +77,8 @@ class _Register extends State<Register> {
       appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: new Text("Login"),
-        backgroundColor: Colors.blue,
+        title: new Text("Регистрация"),
+        //backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Center(
@@ -87,7 +87,7 @@ class _Register extends State<Register> {
           child: new Column(children: <Widget>[
             new Container(
               child: new Text(
-                "Register Form",
+                "Регистрационна форма",
                 style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
               ),
               margin: EdgeInsets.only(top:10.0),
@@ -105,7 +105,7 @@ class _Register extends State<Register> {
                 height: 40.0,
                 color: Colors.blueAccent,
                 child: Center(
-                  child: Text("Register",
+                  child: Text("Регистриране",
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
@@ -113,7 +113,7 @@ class _Register extends State<Register> {
             ),
           ]),
         ),
-      ),
+      )
     );
   }
 }
