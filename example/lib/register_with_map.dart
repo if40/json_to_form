@@ -102,7 +102,7 @@ class _RegisterMap extends State<RegisterMap> {
               },
               buttonSave: new Container(
                 height: 40.0,
-                color: Colors.blueAccent,
+                color: Theme.of(context).accentColor,
                 child: Center(
                   child: Text("Register",
                       style: TextStyle(

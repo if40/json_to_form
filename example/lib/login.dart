@@ -47,7 +47,7 @@ class _Login extends State<Login> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Вход"),
-        backgroundColor: Colors.blue,
+        //backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Center(
@@ -64,7 +64,7 @@ class _Login extends State<Login> {
               },
               buttonSave: new Container(
                 height: 40.0,
-                color: Colors.blueAccent,
+                color: Theme.of(context).accentColor,
                 child: Center(
                   child: Text("Login",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
                 ),

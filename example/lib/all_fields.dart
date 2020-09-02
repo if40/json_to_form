@@ -128,7 +128,7 @@ class _AllFields extends State<AllFields> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text("Преобразуване на Json във формуляр."),
-        backgroundColor: Colors.blue,
+        //backgroundColor: Colors.blue,
       ),
       body: new SingleChildScrollView(
         child: new Container(
@@ -146,7 +146,7 @@ class _AllFields extends State<AllFields> {
               },
               buttonSave: new Container(
                 height: 40.0,
-                color: Colors.blueAccent,
+                color: Theme.of(context).accentColor,
                 child: Center(
                   child: Text("Изпращане",
                       style: TextStyle(

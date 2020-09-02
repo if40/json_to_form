@@ -103,7 +103,7 @@ class _Register extends State<Register> {
               },
               buttonSave: new Container(
                 height: 40.0,
-                color: Colors.blueAccent,
+                color: Theme.of(context).accentColor,
                 child: Center(
                   child: Text("Регистриране",
                       style: TextStyle(
