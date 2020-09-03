@@ -61,7 +61,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   dynamic response;
-  int _index =0;
+  int _generatedReportsindex =0;
+  int _selectedBottomBarIndex = 0;
   List<ReportModel> _reports = new List<ReportModel>();
 
   @override
@@ -162,14 +163,39 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Добавяне на нова справка',
         onPressed: () => {
           setState(() {
-                    _index ++;
+                    _generatedReportsindex ++;
                       //Navigator.pushNamed(context, "/allfields");
-                      _reports.add(new ReportModel(name: "Справка " + _index.toString(), id: _index.toString()));
+                      _reports.add(new ReportModel(name: "Справка " + _generatedReportsindex.toString(), id: _generatedReportsindex.toString()));
                     })
           },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Начало'),
+            
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            title: Text('Документи'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            title: Text('Справки'),
+          ),
+        ],
+        currentIndex: _selectedBottomBarIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onBottomBarItemTapped,
       ),
     );
   }
 
-  
+  void _onBottomBarItemTapped(int index) {
+    setState(() {
+      _selectedBottomBarIndex = index;
+    });
+  }
 }
