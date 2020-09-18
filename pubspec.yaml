@@ -6,7 +6,7 @@ homepage: https://github.com/VictorRancesCode/json_to_form
 dependencies:
   flutter:
     sdk: flutter
-
+  provider: ^4.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,11 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+
 import 'all_fields.dart';
 import 'all_fields_v1.dart';
 import 'login.dart';
 import 'register.dart';
 import 'report_model.dart';
+// import 'report_list_model.dart';
+// import 'package:provider/provider.dart';
+
 
 //import 'register_with_map.dart';
 //import 'all_fields_v1.dart';
@@ -61,8 +65,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   dynamic response;
-  int _generatedReportsindex =0;
-  int _selectedBottomBarIndex = 0;
+  int _generatedReportsindex = 0;
+  int _selectedBottomBarIndex = 1;
   List<ReportModel> _reports = new List<ReportModel>();
 
   @override
@@ -90,11 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListTile(
               leading: Icon(Icons.info_rounded),
               title: Text(_reports[index].name),
-              subtitle: Text("Описание на ${_reports[index].name}", style: TextStyle(fontStyle: FontStyle.italic)),
+              subtitle: Text("Описание на ${_reports[index].name}",
+                  style: TextStyle(fontStyle: FontStyle.italic)),
             );
           },
           separatorBuilder: (context, index) {
-            return Divider(height: 1.0,);
+            return Divider(
+              height: 1.0,
+            );
           },
         ),
       ),
@@ -161,34 +168,32 @@ class _MyHomePageState extends State<MyHomePage> {
         //backgroundColor: Colors.green,
         foregroundColor: Colors.white,
         tooltip: 'Добавяне на нова справка',
-        onPressed: () => {
-          setState(() {
-                    _generatedReportsindex ++;
-                      //Navigator.pushNamed(context, "/allfields");
-                      _reports.add(new ReportModel(name: "Справка " + _generatedReportsindex.toString(), id: _generatedReportsindex.toString()));
-                    })
-          },
+        onPressed: () => {_onBottomNavigationBarTapped(context)},
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Начало'),
-            
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Документи'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            title: Text('Справки'),
-          ),
-        ],
-        currentIndex: _selectedBottomBarIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onBottomBarItemTapped,
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+          // sets the background color of the `BottomNavigationBar`
+          //canvasColor: Colors.green,
+          // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+          primaryColor: Theme.of(context).accentColor,
+          // textTheme: Theme.of(context).textTheme.copyWith(
+          //     caption: new TextStyle(color: Colors.yellow))
+        ),
+        child: new BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedBottomBarIndex,
+          onTap: _onBottomBarItemTapped,
+          items: [
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.home),
+              title: new Text("Начало"),
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.info),
+              title: new Text("Справки"),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -197,5 +202,24 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _selectedBottomBarIndex = index;
     });
+  }
+
+  void _onBottomNavigationBarTapped(BuildContext context) {
+    try {
+      _generatedReportsindex++;
+      setState(() {
+        //Navigator.pushNamed(context, "/allfields");
+        _reports.add(new ReportModel(
+            name: "Справка " + _generatedReportsindex.toString(),
+            id: _generatedReportsindex.toString()));
+      });
+      
+      // var list = context.read<ReportListModel>();
+      // list.add(new ReportModel(
+      //       name: "Справка " + _generatedReportsindex.toString(),
+      //       id: _generatedReportsindex.toString()));
+    } catch (e) {
+      print(e);
+    }
   }
 }
